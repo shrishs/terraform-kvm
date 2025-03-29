@@ -117,6 +117,10 @@ dev-vm.localdomain
 <html><body><h1>IP Address: dev-vm.localdomain</h1></body></html>
 ----
 
+=== All above step can also be verified from Cockpit.
+
+image::environments/dev/cockpit-screenshot.png[Cockpit, width=600, align=center]
+
 == 🔧 What It Does
 
 - Creates a KVM virtual machine using libvirt provider
