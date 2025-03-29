@@ -1,0 +1,35 @@
+#cloud-config
+hostname: ${hostname}
+fqdn: ${hostname}.localdomain   
+
+users:
+  - name: fedora
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: wheel
+    lock_passwd: false
+    passwd: ${password_hash}
+    ssh_authorized_keys:
+      - ${ssh_pub_key}
+
+chpasswd:
+  expire: false
+
+packages:
+  - httpd
+
+write_files:
+  - path: /usr/local/bin/setup-httpd.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      echo "<html><body><h1>IP Address: $(hostname -f)</h1></body></html>" > /tmp/index.html
+      sudo mv /tmp/index.html /var/www/html/index.html
+      sudo chown -R apache:apache /var/www/html
+      sudo restorecon -Rv /var/www/html                   
+      sudo systemctl enable httpd
+      sudo systemctl start httpd
+
+runcmd:
+  - sudo /usr/local/bin/setup-httpd.sh
+

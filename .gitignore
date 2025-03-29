@@ -1,0 +1,29 @@
+# === Terraform State ===
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+*.lock.hcl
+**/outputs.tf
+
+
+# === Sensitive or generated files ===
+*.tfvars
+*.tfvars.json
+*.pem
+*.key
+*.crt
+id_rsa*
+.password_hash
+
+# === Terraform plan files ===
+*.tfplan
+
+# === Editor & OS files ===
+*.log
+*.swp
+*.swo
+.DS_Store
+.idea/
+.vscode/
+
