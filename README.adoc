@@ -117,9 +117,17 @@ dev-vm.localdomain
 <html><body><h1>IP Address: dev-vm.localdomain</h1></body></html>
 ----
 
-=== All above step can also be verified from Cockpit.
+=== All the above steps can also be verified from Cockpit.
 
 image::environments/dev/cockpit-screenshot.png[Cockpit, width=600, align=center]
+
+
+=== Clean up all the resources.
+
+[source,bash]
+----
+[ocp@linux dev]$ terraform destroy
+----
 
 == 🔧 What It Does
 
